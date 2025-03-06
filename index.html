@@ -1,1 +1,69 @@
-Hola mundo!!
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul class="menu">
+            <li><button class="btn" onclick="openModal('inicio')">Inicio</button></li>
+            <li><button class="btn" onclick="openModal('nosotros')">Nosotros</button></li>
+            <li><button class="btn" onclick="openModal('mision')">Misión</button></li>
+            <li><button class="btn" onclick="openModal('vision')">Visión</button></li>
+            <li><button class="btn" onclick="openModal('contacto')">Contacto</button></li>
+            <li><button class="btn" onclick="openModal('ubicacion')">Ubicación</button></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div id="content">
+        <h1>Bienvenido a nuestra Landing Page</h1>
+    </div>
+
+    <!-- Ventanas Emergentes -->
+    <div id="inicio" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('inicio')">&times;</span>
+            <h2>Inicio</h2>
+            <p>Bienvenido a nuestro sitio web.</p>
+        </div>
+    </div>
+
+    <div id="nosotros" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('nosotros')">&times;</span>
+            <h2>Nosotros</h2>
+            <p>Somos una empresa innovadora.</p>
+        </div>
+    </div>
+
+    <div id="mision" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mision')">&times;</span>
+            <h2>Misión</h2>
+            <p>Nuestra misión es...</p>
+        </div>
+    </div>
+
+    <div id="vision" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('vision')">&times;</span>
+            <h2>Visión</h2>
+            <p>Nuestra visión es...</p>
+        </div>
+    </div>
+
+    <div id="contacto" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contacto')">&times;</span>
+            <h2>Contacto</h2>
+            <form id="contactForm" action="contacto.php" method="post">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="e
