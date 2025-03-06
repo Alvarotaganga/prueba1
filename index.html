@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Aquí cambió 'styles.css' a 'style.css' -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -66,4 +66,22 @@
                 <label for="name">Nombre:</label>
                 <input type="text" id="name" name="name" required><br><br>
                 <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="e
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">Mensaje:</label><br>
+                <textarea id="message" name="message" required></textarea><br><br>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="ubicacion" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ubicacion')">&times;</span>
+            <h2>Ubicación</h2>
+            <p>Estamos ubicados en...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
