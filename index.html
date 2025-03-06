@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Referencia al archivo de estilo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery para usar AJAX -->
 </head>
 <body>
     <!-- Menú de Navegación -->
@@ -25,7 +25,7 @@
         <h1>Bienvenido a nuestra Landing Page</h1>
     </div>
 
-    <!-- Ventanas Emergentes -->
+    <!-- Ventanas Emergentes (Modales) -->
     <div id="inicio" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('inicio')">&times;</span>
@@ -46,7 +46,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('mision')">&times;</span>
             <h2>Misión</h2>
-            <p>Nuestra misión es...</p>
+            <p>Nuestra misión es proporcionar soluciones innovadoras que mejoren la calidad de vida de nuestros clientes a través de productos y servicios de alta calidad, sostenibles y accesibles.</p>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('vision')">&times;</span>
             <h2>Visión</h2>
-            <p>Nuestra visión es...</p>
+            <p>Ser una empresa líder en nuestro sector, reconocida por nuestra capacidad de innovación y compromiso con el bienestar de nuestros clientes, la sostenibilidad y el desarrollo social.</p>
         </div>
     </div>
 
@@ -78,10 +78,12 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('ubicacion')">&times;</span>
             <h2>Ubicación</h2>
-            <p>Estamos ubicados en...</p>
+            <p>Nos encontramos en la siguiente ubicación:</p>
+            <div id="mapa" style="width: 100%; height: 400px;"></div> <!-- Mapa de Google Maps -->
         </div>
     </div>
 
-    <script src="main.js"></script> 
+    <script src="main.js"></script> <!-- Referencia a tu archivo de script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script> <!-- Google Maps API -->
 </body>
 </html>
