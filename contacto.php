@@ -1,19 +1,57 @@
 <?php
 // Validar y sanitizar datos
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitizar y recortar los datos de entrada
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
     $message = htmlspecialchars(trim($_POST['message']));
 
     // Verificar que los campos no estén vacíos
     if (!empty($name) && !empty($email) && !empty($message)) {
-        // Procesar el formulario (puedes enviar el correo, guardar en base de datos, etc.)
-        // Aquí solo mostramos los datos recibidos como ejemplo.
-        echo "Nombre: " . $name . "<br>";
-        echo "Correo: " . $email . "<br>";
-        echo "Mensaje: " . $message . "<br>";
+
+        // Validar el correo electrónico
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "El correo electrónico no es válido.";
+            exit;  // Detener la ejecución si el correo no es válido
+        }
+
+        // Opcional: Validar longitud del mensaje
+        if (strlen($message) < 10) {
+            echo "El mensaje es demasiado corto. Debe tener al menos 10 caracteres.";
+            exit;  // Detener la ejecución si el mensaje es demasiado corto
+        }
+
+        // Datos del correo
+        $to = "tu_correo@dominio.com"; // Cambia esto por tu dirección de correo electrónico
+        $subject = "Nuevo mensaje de contacto desde el sitio web";
+        
+        // Cuerpo del mensaje (en formato HTML)
+        $body = "<html>
+                    <head>
+                        <title>Nuevo mensaje de contacto</title>
+                    </head>
+                    <body>
+                        <p><strong>Nombre:</strong> $name</p>
+                        <p><strong>Correo:</strong> $email</p>
+                        <p><strong>Mensaje:</strong><br>$message</p>
+                    </body>
+                </html>";
+
+        // Cabeceras para enviar el correo en formato HTML
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $email" . "\r\n";  // El correo que envía el mensaje
+
+        // Enviar el correo
+        if (mail($to, $subject, $body, $headers)) {
+            echo "¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.";
+        } else {
+            echo "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.";
+        }
+
     } else {
         echo "Todos los campos son requeridos.";
     }
 }
 ?>
+
