@@ -1,4 +1,7 @@
 <?php
+// Incluir el archivo de conexión a la base de datos
+include 'db.php'; // Asegúrate de tener el archivo db.php con la conexión a tu base de datos
+
 // Validar y sanitizar datos
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitizar y recortar los datos de entrada
@@ -21,8 +24,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;  // Detener la ejecución si el mensaje es demasiado corto
         }
 
+        // Preparar la consulta SQL para insertar los datos en la base de datos
+        try {
+            // SQL para insertar los datos en la tabla contacto_formulario
+            $sql = "INSERT INTO contacto_formulario (name, email, message) 
+                    VALUES (:name, :email, :message)";
+
+            // Preparar la declaración
+            $stmt = $conn->prepare($sql);
+
+            // Vincular los parámetros
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':message', $message);
+
+            // Ejecutar la consulta
+            $stmt->execute();
+        } catch(PDOException $e) {
+            echo "Error al guardar el mensaje en la base de datos: " . $e->getMessage();
+            exit;  // Detener la ejecución si hay un error en la base de datos
+        }
+
         // Datos del correo
-        $to = "tu_correo@dominio.com"; // Cambia esto por tu dirección de correo electrónico
+        $to = "05alvaro12@gmail.com"; // Cambia esto por tu dirección de correo electrónico
         $subject = "Nuevo mensaje de contacto desde el sitio web";
         
         // Cuerpo del mensaje (en formato HTML)
@@ -54,4 +78,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
