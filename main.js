@@ -1,30 +1,27 @@
-// Abrir ventana emergente
-function openModal(section) {
-    document.getElementById(section).style.display = "block";
+// Función para abrir el modal
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
 }
 
-// Cerrar ventana emergente
-function closeModal(section) {
-    document.getElementById(section).style.display = "none";
+// Función para cerrar el modal
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
 }
 
-// Enviar formulario con AJAX para evitar recarga de página
-$(document).ready(function() {
-    $('#contactForm').on('submit', function(e) {
-        e.preventDefault();
+// Función para cargar el mapa de Google Maps
+function initMap() {
+    // Coordenadas de la ubicación (por ejemplo, la Torre Eiffel en París)
+    var ubicacion = { lat: 48.8588443, lng: 2.2943506 };
 
-        $.ajax({
-            type: 'POST',
-            url: 'contacto.php',
-            data: $(this).serialize(),
-            success: function(response) {
-                alert('Formulario enviado con éxito');
-                $('#contactForm')[0].reset();
-                closeModal('contacto');
-            },
-            error: function() {
-                alert('Hubo un error al enviar el formulario');
-            }
-        });
+    // Crear el mapa
+    var map = new google.maps.Map(document.getElementById('mapa'), {
+        zoom: 15,
+        center: ubicacion
     });
-});
+
+    // Crear un marcador en la ubicación
+    var marker = new google.maps.Marker({
+        position: ubicacion,
+        map: map
+    });
+}
