@@ -86,7 +86,7 @@ nav ul li button:hover {
     padding: 30px;
     border-radius: 8px;
     width: 80%;
-    max-width: 600px;
+    max-width: 500px; /* Reducción del ancho máximo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: fadeIn 0.5s forwards;
@@ -141,19 +141,19 @@ form {
 
 /* Estilo para los campos de entrada en el formulario */
 input[type="text"], input[type="email"], textarea {
-    padding: 16px; /* Aumenta el padding */
-    margin: 12px 0;
+    padding: 10px; /* Reducido el padding */
+    margin: 10px 0; /* Reducido el margen */
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 14px; /* Reducido el tamaño de la fuente */
     width: 100%; /* Hace que los campos ocupen todo el ancho disponible */
-    max-width: 500px; /* Limita el ancho máximo */
+    max-width: 450px; /* Ajustado el ancho máximo */
     transition: border-color 0.3s ease;
 }
 
 /* Estilo para el textarea (área de mensaje) */
 textarea {
-    height: 150px; /* Aumenta la altura del área de mensaje */
+    height: 120px; /* Reducida la altura */
     resize: vertical; /* Permite cambiar el tamaño del área de texto solo verticalmente */
 }
 
@@ -166,10 +166,10 @@ input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
 button[type="submit"] {
     background-color: #3498db;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 18px; /* Ajustado el padding */
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Reducido el tamaño de la fuente */
     border-radius: 6px;
     transition: background-color 0.3s ease;
 }
